@@ -41,10 +41,14 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text("Tasks"),
       ),
-      body: Center(
+      body:
+
+      Center(
         child: listViewBuilder(count), //currentScreen //listViewBuilder(count),
         //TaskDetails(),
       ),
+
+
       floatingActionButton: FloatingActionButton(
         onPressed: addTask,
         tooltip: 'Add Task',

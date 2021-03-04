@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'theme.dart';
 
 class TaskDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    ThemeChanger _themeChanger = Provider.of<ThemeChanger>(context);
     return Scaffold(
       appBar: AppBar(
           elevation: 0,
@@ -39,10 +43,20 @@ class TaskDetails extends StatelessWidget {
             ),
           ]),
       body: Center(
-        child: new Row(
+        /*child: new Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[],
+        ),*/
+        child: Column(
+          children: <Widget>[
+            TextButton(
+                child: Text('Dark Theme'),
+                onPressed: () => _themeChanger.setTheme(ThemeData.dark())),
+            TextButton(
+                child: Text('Light Theme'),
+                onPressed: () => _themeChanger.setTheme(ThemeData.light().copyWith(accentColor: Colors.green, backgroundColor: Colors.amber, primaryColor: Colors.green))),
+          ],
         ),
       ),
     );
