@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:next_step_planning/home_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'theme.dart';
 
 class TaskDetails extends StatelessWidget {
+  final _textController = TextEditingController();
+  String taskName;
   @override
   Widget build(BuildContext context) {
     ThemeChanger _themeChanger = Provider.of<ThemeChanger>(context);
@@ -12,10 +15,9 @@ class TaskDetails extends StatelessWidget {
       appBar: AppBar(
           elevation: 0,
           leadingWidth: 5,
-          backgroundColor: Colors.white,
           title: Text(
             "Task Details",
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(),
           ),
           actions: <Widget>[
             Container(
@@ -43,27 +45,38 @@ class TaskDetails extends StatelessWidget {
             ),
           ]),
       body: Center(
-        /*child: new Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[],
-        ),*/
-        child: Column(
-          children: <Widget>[
-            TextButton(
-                child: Text('Dark Theme'),
-                onPressed: () => _themeChanger.setTheme(ThemeData.dark())),
-            TextButton(
-                child: Text('Light Theme'),
-                onPressed: () => _themeChanger.setTheme(ThemeData.light().copyWith(accentColor: Colors.green, backgroundColor: Colors.amber, primaryColor: Colors.green))),
-          ],
-        ),
-      ),
+
+
+         child: Column(
+           children: <Widget>[
+             TextButton(
+                 child: Text('Light Theme'),
+                 onPressed: () => _themeChanger.setTheme(ThemeData.light().copyWith(
+                   accentColor: Colors.green,
+                   primaryColor: Colors.green,
+                 ))),
+             TextButton(
+                 child: Text('Dark Theme'),
+                 onPressed: () => _themeChanger.setTheme(ThemeData.dark().copyWith(
+                     accentColor: Colors.green,
+                     primaryColor: Colors.green))),
+             TextField(
+               onChanged: (name){
+                 taskName = name;
+               },
+               controller: _textController,)
+           ],
+    ),
+    )
     );
+      //),
+    //);
   }
 
   //Navigate back to home screen
   void addTask(BuildContext context) {
-    Navigator.pop(context);
+    // Navigator.pop(context);
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => MyHomePage(taskName : taskName)));
   }
 }
