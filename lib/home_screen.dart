@@ -4,10 +4,6 @@ import 'package:next_step_planning/task_details_screen.dart';
 
 // This this the home screen. It contains all of the tasks the user have created.
 class MyHomePage extends StatefulWidget {
-  //temp variable
-  String taskName;
-  MyHomePage({this.taskName});
-  //MyHomePage({Key key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -16,18 +12,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String taskName;
   int count = 0;
   int botNavBarIndex = 0;
   List tasks = List<String>.generate(0, (index) => null);
 
-
   List taskAssign() {
-    tasks = List<String>.generate(count, (index) => "Task " + (index + 1).toString());
+    tasks = List<String>.generate(
+        count, (index) => "Task " + (index + 1).toString());
     return tasks;
   }
-
-
-
 
   // Widget currentScreen = listViewBuilder(0);
 
@@ -39,13 +33,8 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-
   int _navigationIndex = 0;
-  final List<Widget> _pages = [
-    MyHomePage(),
-    Settings(),
-    Settings()
-  ];
+  final List<Widget> _pages = [MyHomePage(), Settings(), Settings()];
 
   //Builds The App
   @override
@@ -54,9 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text("Tasks"),
       ),
-      body:
-
-      Center(
+      body: Center(
         child: listViewBuilder(count), //currentScreen //listViewBuilder(count),
         //TaskDetails(),
       ),
@@ -69,25 +56,16 @@ class _MyHomePageState extends State<MyHomePage> {
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white,
         items: [
-
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.sort), label: 'Sort'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home'),
-
-          BottomNavigationBarItem(
-              icon: Icon(Icons.sort),
-              label: 'Sort'),
-
-          BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              label: 'Settings'),
+              icon: Icon(Icons.settings), label: 'Settings'),
         ],
-        onTap: (index){
+        onTap: (index) {
           setState(() {
             _navigationIndex = index;
           });
         },
-
       ),
 
       floatingActionButton: FloatingActionButton(
@@ -96,16 +74,18 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.green,
         child: Icon(Icons.add),
       ),
-
     );
   }
 
   // Increment number of task(s) and navigate to the TaskDetails class
-  void addTask() {
-    Navigator.push(
+  Future<void> addTask() async {
+    final result = await Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => TaskDetails()),
-    );
+      MaterialPageRoute(builder: (context) => TaskDetails(),
+      ));
+    setState(() {
+      taskName = result;
+    });
     _incrementCounter();
   }
 
@@ -125,12 +105,14 @@ class _MyHomePageState extends State<MyHomePage> {
             });
 
             // Message confirming the removal of a task
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Task removed")));
-
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text("Task removed")));
           },
-          child: ListTile(title: Text("Task " + (index + 1).toString()),
+          child: ListTile(
+              // title: Text("Task " + (index + 1).toString()),       // this this the original task tilte
+              title: Text(taskName),
               subtitle: Text("Task is due by (insert date here)"),
-            leading: Icon(Icons.assignment_outlined)),
+              leading: Icon(Icons.assignment_outlined)),
         );
       },
     );

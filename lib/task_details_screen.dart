@@ -6,8 +6,10 @@ import 'package:provider/provider.dart';
 import 'theme.dart';
 
 class TaskDetails extends StatelessWidget {
-  final _textController = TextEditingController();
+  // this allows us to access the TextField text
+  TextEditingController textFieldController = TextEditingController();
   String taskName;
+  // TaskDetails({Key key, @required this.taskName}) : super(key:key);
 
   @override
   Widget build(BuildContext context) {
@@ -72,10 +74,10 @@ class TaskDetails extends StatelessWidget {
                           accentColor: Colors.green,
                           primaryColor: Colors.green))),
               TextField(
+                controller: textFieldController,
                 onChanged: (name) {
                   taskName = name;
                 },
-                controller: _textController,
               )
             ],
           ),
@@ -86,8 +88,8 @@ class TaskDetails extends StatelessWidget {
 
   //Navigate back to home screen
   void addTask(BuildContext context) {
-    // Navigator.pop(context);
-    Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => MyHomePage(taskName: taskName)));
+    taskName = textFieldController.text;
+    print("This is task name" + taskName);
+    Navigator.pop(context, taskName);
   }
 }
