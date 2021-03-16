@@ -23,7 +23,6 @@ class _MyHomePageState extends State<MyHomePage> {
     return tasks;
   }
 
-  // Widget currentScreen = listViewBuilder(0);
 
   // Used with the Floating Action Button (For now) Keeps track of how many times it's pressed
   void _incrementCounter() {
@@ -33,8 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  int _navigationIndex = 0;
-  final List<Widget> _pages = [MyHomePage(), Settings(), Settings()];
+
 
   //Builds The App
   @override
@@ -47,27 +45,6 @@ class _MyHomePageState extends State<MyHomePage> {
         child: listViewBuilder(count), //currentScreen //listViewBuilder(count),
         //TaskDetails(),
       ),
-
-      //bottomSheet: _pages[_navigationIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _navigationIndex,
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.green,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.sort), label: 'Sort'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.settings), label: 'Settings'),
-        ],
-        onTap: (index) {
-          setState(() {
-            _navigationIndex = index;
-          });
-        },
-      ),
-
       floatingActionButton: FloatingActionButton(
         onPressed: addTask,
         tooltip: 'Add Task',

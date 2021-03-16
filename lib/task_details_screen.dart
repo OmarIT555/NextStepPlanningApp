@@ -54,25 +54,6 @@ class TaskDetails extends StatelessWidget {
         body: Center(
           child: Column(
             children: <Widget>[
-              TextButton(
-                  style: TextButton.styleFrom(
-                    primary: Colors.green,
-                  ),
-                  child: Text('Light Theme'),
-                  onPressed: () =>
-                      _themeChanger.setTheme(ThemeData.light().copyWith(
-                        accentColor: Colors.green,
-                        primaryColor: Colors.green,
-                      ))),
-              TextButton(
-                  style: TextButton.styleFrom(
-                    primary: Colors.green,
-                  ),
-                  child: Text('Dark Theme'),
-                  onPressed: () => _themeChanger.setTheme(ThemeData.dark()
-                      .copyWith(
-                          accentColor: Colors.green,
-                          primaryColor: Colors.green))),
               TextField(
                 controller: textFieldController,
                 onChanged: (name) {
