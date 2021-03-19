@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:next_step_planning/Settings.dart';
 import 'package:next_step_planning/task_details_screen.dart';
 
+import 'Task.dart';
+
 // This this the home screen. It contains all of the tasks the user have created.
 class MyHomePage extends StatefulWidget {
 
@@ -12,23 +14,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String taskName;
   int count = 0;
   int botNavBarIndex = 0;
   List tasks = List<String>.generate(0, (index) => null);
 
-  List taskAssign() {
-    tasks = List<String>.generate(
-        count, (index) => "Task " + (index + 1).toString());
-    return tasks;
+  void taskAssign(String taskName) {
+        tasks.insert(0, taskName);
+        print(tasks);
   }
 
 
   // Used with the Floating Action Button (For now) Keeps track of how many times it's pressed
-  void _incrementCounter() {
+  void _incrementCounter(String taskName) {
     setState(() {
       count++;
-      tasks = taskAssign();
+      taskAssign(taskName);
     });
   }
 
@@ -61,9 +61,9 @@ class _MyHomePageState extends State<MyHomePage> {
       MaterialPageRoute(builder: (context) => TaskDetails(),
       ));
     setState(() {
-      taskName = result;
+      String taskName = result;
+      _incrementCounter(taskName);
     });
-    _incrementCounter();
   }
 
   // Used for creating and removing tasks
@@ -86,8 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 .showSnackBar(SnackBar(content: Text("Task removed")));
           },
           child: ListTile(
-              // title: Text("Task " + (index + 1).toString()),       // this this the original task tilte
-              title: Text(taskName),
+              title: Text(tasks[index]),
               subtitle: Text("Task is due by (insert date here)"),
               leading: Icon(Icons.assignment_outlined)),
         );
