@@ -6,7 +6,6 @@ import 'Task.dart';
 
 // This this the home screen. It contains all of the tasks the user have created.
 class MyHomePage extends StatefulWidget {
-
   @override
   State<StatefulWidget> createState() {
     return _MyHomePageState();
@@ -14,25 +13,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int count = 0;
   int botNavBarIndex = 0;
   List tasks = List<String>.generate(0, (index) => null);
 
+  // Add new task to the list
   void taskAssign(String taskName) {
-        tasks.insert(0, taskName);
-        print(tasks);
-  }
-
-
-  // Used with the Floating Action Button (For now) Keeps track of how many times it's pressed
-  void _incrementCounter(String taskName) {
     setState(() {
-      count++;
-      taskAssign(taskName);
+      tasks.insert(0, taskName);
+      print(tasks);
     });
   }
-
-
 
   //Builds The App
   @override
@@ -42,8 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text("Tasks"),
       ),
       body: Center(
-        child: listViewBuilder(count), //currentScreen //listViewBuilder(count),
-        //TaskDetails(),
+        child: listViewBuilder(),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: addTask,
@@ -54,20 +43,23 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  // Increment number of task(s) and navigate to the TaskDetails class
+  // Navigate to the TaskDetails class and add new task to the list of task(s)
   Future<void> addTask() async {
     final result = await Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => TaskDetails(),
-      ));
+        context,
+        MaterialPageRoute(
+          builder: (context) => TaskDetails(),
+        ));
     setState(() {
       String taskName = result;
-      _incrementCounter(taskName);
+      if(taskName != ""){
+        taskAssign(taskName);
+      }
     });
   }
 
   // Used for creating and removing tasks
-  ListView listViewBuilder(int num) {
+  ListView listViewBuilder() {
     return ListView.builder(
       itemCount: tasks.length,
       itemBuilder: (context, index) {
@@ -78,9 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
             // Remove the task and decreases the count
             setState(() {
               tasks.removeAt(index);
-              count--;
             });
-
             // Message confirming the removal of a task
             ScaffoldMessenger.of(context)
                 .showSnackBar(SnackBar(content: Text("Task removed")));

@@ -33,7 +33,7 @@ class TaskDetails extends StatelessWidget {
                   ),
                   child: Text("Save"),
                   onPressed: () {
-                    addTask(context);
+                    returnHome(context);
                   },
                 ),
               ),
@@ -46,7 +46,7 @@ class TaskDetails extends StatelessWidget {
                   ),
                   child: Text("Cancel"),
                   onPressed: () {
-                    print("Cancel button was clicked");
+                    addTask(context);
                   },
                 ),
               ),
@@ -70,7 +70,10 @@ class TaskDetails extends StatelessWidget {
   //Navigate back to home screen
   void addTask(BuildContext context) {
     taskName = textFieldController.text;
-    print("This is task name" + taskName);
+    Navigator.pop(context, taskName);
+  }
+
+  void returnHome(BuildContext context) {
     Navigator.pop(context, taskName);
   }
 }
