@@ -46,7 +46,7 @@ class TaskDetails extends StatelessWidget {
                   ),
                   child: Text("Cancel"),
                   onPressed: () {
-                    addTask(context);
+                    returnHome(context);
                   },
                 ),
               ),
@@ -68,12 +68,8 @@ class TaskDetails extends StatelessWidget {
   }
 
   //Navigate back to home screen
-  void addTask(BuildContext context) {
+  void returnHome (BuildContext context) {
     taskName = textFieldController.text;
-    Navigator.pop(context, taskName);
-  }
-
-  void returnHome(BuildContext context) {
     Navigator.pop(context, taskName);
   }
 }
