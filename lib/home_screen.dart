@@ -14,13 +14,15 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int botNavBarIndex = 0;
-  List tasks = List<String>.generate(0, (index) => null);
+  List tasks = List<Task>.generate(0, (index) => null);
 
   // Add new task to the list
-  void taskAssign(String taskName) {
+  void taskAssign(Task task) {
     setState(() {
-      tasks.insert(0, taskName);
-      print(tasks);
+      tasks.insert(0, task);
+      print(task.taskName);
+      print(task.dueDate);
+      print(task.taskDescription);
     });
   }
 
@@ -51,10 +53,9 @@ class _MyHomePageState extends State<MyHomePage> {
           builder: (context) => TaskDetails(),
         ));
     setState(() {
-      String taskName = result;
-      if(taskName != ""){
-        taskAssign(taskName);
-      }
+      print(result);
+      Task task = result;
+        taskAssign(task);
     });
   }
 
@@ -65,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
       itemBuilder: (context, index) {
         final task = tasks[index];
         return Dismissible(
-          key: Key(task),
+          key: Key(task.taskName),
           onDismissed: (direction) {
             // Remove the task and decreases the count
             setState(() {
@@ -76,8 +77,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 .showSnackBar(SnackBar(content: Text("Task removed")));
           },
           child: ListTile(
-              title: Text(tasks[index]),
-              subtitle: Text("Task is due by (insert date here)"),
+              title: Text(tasks[index].taskName),
+              subtitle: Text("Task is due by (${tasks[index].dueDate})"),
               leading: Icon(Icons.assignment_outlined)),
         );
       },

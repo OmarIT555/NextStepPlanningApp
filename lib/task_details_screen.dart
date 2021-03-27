@@ -1,14 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'Task.dart';
 import 'customColorPicker.dart';
 
 class TaskDetails extends StatelessWidget {
-  // this allows us to access the TextField text
-  TextEditingController textFieldController = TextEditingController();
-  String taskName, dateCreated, dateDue, description;
+  // Access the TextField texts
+  var nameController = TextEditingController();
+  var dateController = TextEditingController();
+  var descriptionController = TextEditingController();
+
+  String taskName, dateCreated, dueDate, taskDescription;
   Color taskColor;
   bool isCompleted;
-  List<bool> isSelected = [false, false, false];
+  List<bool> isSelected = [true, false, false];
 
   @override
   Widget build(BuildContext context) {
@@ -55,35 +59,36 @@ class TaskDetails extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text("TASK NAME:"),
-              TextField(
+              Text("TASK NAME:"),                               //Task name
+              TextFormField(
                 decoration: InputDecoration(
                   hintText: "Study, Clean up, etc.",
                 ),
-                controller: textFieldController,
+                controller: nameController,
                 onChanged: (name) {
                   taskName = name;
                 },
               ),
-              Container(
+              Container(                                        //Due by
                 padding: EdgeInsets.fromLTRB(0, 25, 0, 0),
                 child: Text("DUE BY:"),
               ),
-              TextField(
+              TextFormField(
                 decoration: InputDecoration(
                   hintText: "(MM/DD/YYYY)",
                 ),
-                // controller: textFieldController,
-                // onChanged: (name) {
-                //   taskName = name;
-                // },
+                keyboardType: TextInputType.number,
+                controller: dateController,
+                onChanged: (date) {
+                  dueDate = date;
+                },
               ),
-              Container(
+              Container(                                         //Task Color
                 padding: EdgeInsets.fromLTRB(0, 25, 0, 0),
                 child: Text("TASK COLOR:"),
               ),
               MyCustomColorPicker(),
-              Container(
+              Container(                                        //Task difficulty
                 padding: EdgeInsets.fromLTRB(0, 25, 0, 0),
                 child: Text("TASK DIFFICULTY:"),
               ),
@@ -109,15 +114,15 @@ class TaskDetails extends StatelessWidget {
                 onPressed: (int index) {},
                 isSelected: isSelected,
               ),
-              Container(
-                padding: EdgeInsets.fromLTRB(0, 25, 0, 0),
+              Container(                                        //Task Description
+                padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
                 child: Text("TASK DESCRIPTION:"),
               ),
               TextField(
-                // controller: textFieldController,
-                // onChanged: (name) {
-                //   taskName = name;
-                // },
+                controller: descriptionController,
+                onChanged: (description) {
+                  taskDescription = description;
+                },
               ),
             ],
           ),
@@ -126,7 +131,22 @@ class TaskDetails extends StatelessWidget {
 
   //Navigate back to home screen
   void returnHome(BuildContext context) {
-    taskName = textFieldController.text;
-    Navigator.pop(context, taskName);
+
+    Navigator.pop(context, createTask());
+  }
+
+  Task createTask(){
+    taskName = nameController.text;
+    dueDate = dateController.text;
+    taskDescription = descriptionController.text;
+
+    var task = Task();
+
+    task.taskName = taskName;
+    task.dueDate = dueDate;
+    task.taskDescription = taskDescription;
+
+    //!!! Validate task before returning !!!
+    return task;
   }
 }
