@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:next_step_planning/Settings.dart';
+import 'package:next_step_planning/db/database.dart';
 import 'package:next_step_planning/task_details_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'Task.dart';
 
@@ -15,6 +17,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int botNavBarIndex = 0;
   List tasks = List<Task>.generate(0, (index) => null);
+
+  @override
+  void initState() {
+    super.initState();
+    DataBase.db.getTasks();
+  }
 
   // Add new task to the list
   void taskAssign(Task task) {
@@ -84,4 +92,9 @@ class _MyHomePageState extends State<MyHomePage> {
       },
     );
   }
+
+
+
+
+
 }
