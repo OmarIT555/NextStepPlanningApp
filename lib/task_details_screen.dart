@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:next_step_planning/db/database.dart';
 import 'Task.dart';
 import 'customColorPicker.dart';
 
@@ -145,6 +146,8 @@ class TaskDetails extends StatelessWidget {
     task.taskName = taskName;
     task.dueDate = dueDate;
     task.taskDescription = taskDescription;
+
+    //DataBase.db.insert(task); // Was attempting to save the task in the database
 
     //!!! Validate task before returning !!!
     return task;

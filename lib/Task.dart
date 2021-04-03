@@ -21,6 +21,8 @@ class Task  {
       this.dateCreated
       });
 
+      // -= method of saving data using SQFlite =- \\
+      // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- \\
       Map<String, dynamic> toMap() {
             var map = <String, dynamic>{
                   DataBase.COLUMN_TASKNAME: taskName,
@@ -37,6 +39,7 @@ class Task  {
             return map;
       }
 
+      // Assigns data from Task to the database
       Task.fromMap(Map<String, dynamic> map){
             id = map[DataBase.COLUMN_ID];
             taskName = map[DataBase.COLUMN_TASKNAME];
@@ -46,6 +49,25 @@ class Task  {
             taskDescription = map[DataBase.COLUMN_TASKDESC];
             dateCreated = map[DataBase.COLUMN_TASKCREATED];
       }
+      // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- \\
+
+
+
+      //  -= Alternate method of saving data using shared preferences =- \\
+      // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- \\
+      Task.fromMap2(Map map) :
+            this.taskName = map['taskName'],
+            this.dueDate = map['complete'];
+
+      Map toMap2(){
+            return{
+                  'taskName': this.taskName,
+                  'dueDate' : this.dueDate,
+            };
+      }
+      // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- \\
+
+
 
 
 

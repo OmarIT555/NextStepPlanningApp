@@ -3,6 +3,8 @@ import 'package:next_step_planning/Settings.dart';
 import 'package:next_step_planning/db/database.dart';
 import 'package:next_step_planning/task_details_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 
 import 'Task.dart';
 
@@ -15,22 +17,43 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int botNavBarIndex = 0;
-  List tasks = List<Task>.generate(0, (index) => null);
+  //int botNavBarIndex = 0;
+  List<Task> tasks = List<Task>.generate(0, (index) => null);
+
+  SharedPreferences sharedPreferences;
 
   @override
   void initState() {
+    initSharedPreferences();
     super.initState();
-    DataBase.db.getTasks();
+
+    // Attempting to get all tasks stored in the database
+    DataBase.db.getTasks().then((taskList) => tasks);
+
+    // SQFlite database debug
+    print("Printing DataBase");
+    print(DataBase.db.getTasks());
+
+    // Trying to see if list of tasks got placed into the database
+    print("Printing List tasks");
+    print(tasks);
+  }
+
+  initSharedPreferences() async {
+    sharedPreferences = await SharedPreferences.getInstance();
+    loadData();
   }
 
   // Add new task to the list
   void taskAssign(Task task) {
     setState(() {
       tasks.insert(0, task);
+      DataBase.db.insert(task);
       print(task.taskName);
       print(task.dueDate);
       print(task.taskDescription);
+      print("Task name, date, and description set for void taskAssign");
+      saveData();
     });
   }
 
@@ -64,6 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
       print(result);
       Task task = result;
         taskAssign(task);
+        saveData();
     });
   }
 
@@ -79,6 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
             // Remove the task and decreases the count
             setState(() {
               tasks.removeAt(index);
+              saveData();
             });
             // Message confirming the removal of a task
             ScaffoldMessenger.of(context)
@@ -93,8 +118,19 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  void saveData(){
+    List<String> spList = tasks.map((e) => json.encode(e.toMap2())).toList();
+    sharedPreferences.setStringList('tasks', spList);
+    print(spList);
+    print("Data Saved :D");
+  }
 
-
-
+  void loadData(){
+    List<String> spList = sharedPreferences.getStringList('tasks');
+    tasks = spList.map((e) => Task.fromMap2(json.decode(e))).toList();
+    setState(() {
+    });
+    print("Data Loaded :D");
+  }
 
 }
