@@ -47,7 +47,7 @@ class DataBase {
               "$COLUMN_COLOR TEXT,"
               "$COLUMN_TASKDIFF TEXT,"
               "$COLUMN_TASKDESC TEXT,"
-              "$COLUMN_TASKCREATED TEXT,"
+              "$COLUMN_TASKCREATED TEXT"
               ")",
         );
       },
@@ -73,9 +73,26 @@ class DataBase {
     return taskList;
   }
 
-  Future<Task> insert (Task task) async{
+  Future<Task> insert (Task task) async {
+    final db = await database;
+    task.id = await db.insert(TABLE_TASK, task.toMap());
+    print(task.id);
+    return task;
+  }
+
+  /*insertData(table, data) async {
+    var connection = await DataBase.db;
+    return await connection.insert(table, data);
+  }*/
+
+  /*readData(table, data) async {
+    var connection = await DataBase.db;
+    return await connection.query(table, data);
+  }*/
+
+  /*Future<Task> insert (Task task, data) async{
     final db = await database;
     task.id = await db.insert(TABLE_TASK, task.toMap());
     return task;
-  }
+  }*/
 }
