@@ -10,13 +10,14 @@ class TaskDetails extends StatelessWidget {
   var dateController = TextEditingController();
   var descriptionController = TextEditingController();
 
-  String taskName, dateCreated, dueDate, taskDescription;
+  String taskName, dateCreated, dueDate, taskDescription, taskDifficulty;
   Color taskColor;
   bool isCompleted;
   List<bool> isSelected = [true, false, false];
 
   @override
   Widget build(BuildContext context) {
+    return StatefulBuilder(builder: (context, setState){
     return Scaffold(
         appBar: AppBar(
             elevation: 0,
@@ -94,26 +95,43 @@ class TaskDetails extends StatelessWidget {
                 child: Text("TASK DIFFICULTY:"),
               ),
               ToggleButtons(
+                isSelected: isSelected,
                 renderBorder: false,
                 fillColor: Colors.grey,
                 selectedColor: Colors.white,
                 color: Colors.black,
-                children: [
+                children: <Widget> [
                   Padding(
                     padding: EdgeInsets.only(left: 20, right: 20),
-                      child: Text("Low"),
+                      child: Text("Low (!)"),
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 20, right: 20),
-                      child: Text("Medium"),
+                      child: Text("Medium (!!)"),
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 20, right: 20),
-                      child: Text("High"),
+                      child: Text("High (!!!)"),
                   ),
                 ],
-                onPressed: (int index) {},
-                isSelected: isSelected,
+                onPressed: (int newIndex) {    // task difficulty selection
+                  setState((){
+                    for (int index = 0; index < isSelected.length; index++){
+                      if(index == newIndex){
+                        isSelected[index] = true;
+                      }else{
+                        isSelected[index] = false;
+                      }
+                    }
+                  });
+                  if(newIndex == 0){
+                    taskDifficulty = "Low";
+                  }else if(newIndex == 1){
+                    taskDifficulty = "Medium";
+                  }else{
+                    taskDifficulty = "High";
+                  }
+                },
               ),
               Container(                                        //Task Description
                 padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
@@ -128,11 +146,11 @@ class TaskDetails extends StatelessWidget {
             ],
           ),
         )));
+  });
   }
 
   //Navigate back to home screen
   void returnHome(BuildContext context) {
-
     Navigator.pop(context, createTask());
   }
 
@@ -141,11 +159,12 @@ class TaskDetails extends StatelessWidget {
     dueDate = dateController.text;
     taskDescription = descriptionController.text;
 
-    var task = Task();
+    var task = Task();  // task object to pass back to home page
 
     task.taskName = taskName;
     task.dueDate = dueDate;
     task.taskDescription = taskDescription;
+    task.taskDifficulty = taskDifficulty;
 
     //DataBase.db.insert(task); // Was attempting to save the task in the database
 
@@ -153,3 +172,4 @@ class TaskDetails extends StatelessWidget {
     return task;
   }
 }
+

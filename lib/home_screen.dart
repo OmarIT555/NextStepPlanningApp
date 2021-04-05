@@ -86,8 +86,8 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       print(result);
       Task task = result;
-        taskAssign(task);
-        saveData();
+      taskAssign(task);
+      saveData();
     });
   }
 
@@ -98,39 +98,51 @@ class _MyHomePageState extends State<MyHomePage> {
       itemBuilder: (context, index) {
         final task = tasks[index];
         return Dismissible(
-          key: Key(task.taskName),
-          onDismissed: (direction) {
-            // Remove the task and decreases the count
-            setState(() {
-              tasks.removeAt(index);
-              saveData();
-            });
-            // Message confirming the removal of a task
-            ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(content: Text("Task removed")));
-          },
-          child: ListTile(
+            key: Key(task.taskName),
+            onDismissed: (direction) {
+              // Remove the task and decreases the count
+              setState(() {
+                tasks.removeAt(index);
+                saveData();
+              });
+              // Message confirming the removal of a task
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text("Task removed")));
+            },
+            child: ListTile(
               title: Text(tasks[index].taskName),
               subtitle: Text("Task is due by (${tasks[index].dueDate})"),
-              leading: Icon(Icons.assignment_outlined)),
-        );
+              leading: Icon(Icons.assignment_outlined),
+              trailing: showTaskDifficulty(index),
+            ));
       },
     );
   }
 
-  void saveData(){
+  Text showTaskDifficulty(int index) {
+    if (tasks[index].taskDifficulty == "High") {
+      return Text("!!!",
+          style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold));
+    } else if (tasks[index].taskDifficulty == "Medium") {
+      return Text("!!",
+          style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold));
+    } else {
+      return Text("!",
+          style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold));
+    }
+  }
+
+  void saveData() {
     List<String> spList = tasks.map((e) => json.encode(e.toMap2())).toList();
     sharedPreferences.setStringList('tasks', spList);
     print(spList);
     print("Data Saved :D");
   }
 
-  void loadData(){
+  void loadData() {
     List<String> spList = sharedPreferences.getStringList('tasks');
     tasks = spList.map((e) => Task.fromMap2(json.decode(e))).toList();
-    setState(() {
-    });
+    setState(() {});
     print("Data Loaded :D");
   }
-
 }
