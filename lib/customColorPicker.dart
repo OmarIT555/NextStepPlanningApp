@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class MyCustomColorPicker extends StatefulWidget {
+  final ValueSetter<String> callback;
+  MyCustomColorPicker({this.callback});
   @override
   _MyCustomColorPickerState createState() => _MyCustomColorPickerState();
 }
@@ -9,12 +11,14 @@ class _MyCustomColorPickerState extends State<MyCustomColorPicker> {
   bool isSubmitted = false;
   final checkBoxIcon = 'assets/checkbox.svg';
 
+  String selectedColor = "";
   List<String> selectedCategory = new List<String>();
-  String green = 'green';
-  String red = 'red';
-  String blue = 'blue';
-  String yellow = 'yellow';
-  String purple = 'purple';
+  String green = 'Green';
+  String red = 'Red';
+  String blue = 'Blue';
+  String yellow = 'Yellow';
+  String purple = 'Purple';
+
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +40,8 @@ class _MyCustomColorPickerState extends State<MyCustomColorPicker> {
                           onTap: (){
                             selectedCategory = new List<String>();
                             selectedCategory.add(green);
+                            selectedColor = "green";
+                            widget.callback(selectedColor);
                             setState(() {});
                           },
                           child: Container(
@@ -57,6 +63,8 @@ class _MyCustomColorPickerState extends State<MyCustomColorPicker> {
                           onTap: (){
                             selectedCategory = new List<String>();
                             selectedCategory.add(red);
+                            selectedColor = "red";
+                            widget.callback(selectedColor);
                             setState(() {});
                           },
                           child: Container(
@@ -78,6 +86,8 @@ class _MyCustomColorPickerState extends State<MyCustomColorPicker> {
                           onTap: (){
                             selectedCategory = new List<String>();
                             selectedCategory.add(blue);
+                            selectedColor = "blue";
+                            widget.callback(selectedColor);
                             setState(() {});
                           },
                           child: Container(
@@ -99,6 +109,8 @@ class _MyCustomColorPickerState extends State<MyCustomColorPicker> {
                           onTap: (){
                             selectedCategory = new List<String>();
                             selectedCategory.add(yellow);
+                            selectedColor = "yellow";
+                            widget.callback(selectedColor);
                             setState(() {});
                           },
                           child: Container(
@@ -121,6 +133,8 @@ class _MyCustomColorPickerState extends State<MyCustomColorPicker> {
                           onTap: (){
                             selectedCategory = new List<String>();
                             selectedCategory.add(purple);
+                            selectedColor = "purple";
+                            widget.callback(selectedColor);
                             setState(() {});
                           },
                           child: Container(

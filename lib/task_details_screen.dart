@@ -9,9 +9,9 @@ class TaskDetails extends StatelessWidget {
   var nameController = TextEditingController();
   var dateController = TextEditingController();
   var descriptionController = TextEditingController();
+  MyCustomColorPicker CCP;
 
-  String taskName, dateCreated, dueDate, taskDescription, taskDifficulty;
-  Color taskColor;
+  String taskName, dateCreated, dueDate, taskDescription, taskDifficulty, taskColor;
   bool isCompleted;
   List<bool> isSelected = [true, false, false];
 
@@ -89,7 +89,9 @@ class TaskDetails extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(0, 25, 0, 0),
                 child: Text("TASK COLOR:"),
               ),
-              MyCustomColorPicker(),
+              MyCustomColorPicker(callback: (selectedColor){
+                taskColor = selectedColor;
+              }),
               Container(                                        //Task difficulty
                 padding: EdgeInsets.fromLTRB(0, 25, 0, 0),
                 child: Text("TASK DIFFICULTY:"),
@@ -158,6 +160,8 @@ class TaskDetails extends StatelessWidget {
     taskName = nameController.text;
     dueDate = dateController.text;
     taskDescription = descriptionController.text;
+    print("Task Color");
+    print(taskColor);
 
     var task = Task();  // task object to pass back to home page
 
@@ -165,6 +169,7 @@ class TaskDetails extends StatelessWidget {
     task.dueDate = dueDate;
     task.taskDescription = taskDescription;
     task.taskDifficulty = taskDifficulty;
+    task.taskColor = taskColor;
 
     //DataBase.db.insert(task); // Was attempting to save the task in the database
 

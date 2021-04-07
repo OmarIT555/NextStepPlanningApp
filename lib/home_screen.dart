@@ -111,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             child: ListTile(
               title: Text(tasks[index].taskName),
-              subtitle: Text("Task is due by (${tasks[index].dueDate})"),
+              subtitle: Text("Task is due by (${tasks[index].dueDate })"),
               leading: Icon(Icons.assignment_outlined),
               trailing: showTaskDifficulty(index),
             ));
