@@ -3,17 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:next_step_planning/db/database.dart';
 import 'Task.dart';
 import 'customColorPicker.dart';
+import 'package:intl/intl.dart';
 
 class TaskDetails extends StatelessWidget {
   // Access the TextField texts
   var nameController = TextEditingController();
   var dateController = TextEditingController();
   var descriptionController = TextEditingController();
-  MyCustomColorPicker CCP;
 
   String taskName, dateCreated, dueDate, taskDescription, taskDifficulty, taskColor;
   bool isCompleted;
   List<bool> isSelected = [true, false, false];
+  final DateFormat dateFormatter = DateFormat('MM-dd-yyyy');
 
   @override
   Widget build(BuildContext context) {
@@ -76,14 +77,38 @@ class TaskDetails extends StatelessWidget {
                 child: Text("DUE BY:"),
               ),
               TextFormField(
-                decoration: InputDecoration(
-                  hintText: "(MM/DD/YYYY)",
-                ),
                 keyboardType: TextInputType.number,
                 controller: dateController,
                 onChanged: (date) {
                   dueDate = date;
                 },
+                decoration: InputDecoration(
+                  hintText: "(MM-DD-YYYY)",
+                  suffixIcon: IconButton(
+                    onPressed: (){
+                      showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(2021),
+                          lastDate: DateTime(2030),
+                        builder: (BuildContext context, Widget child) {
+                            return Theme(
+                                data: ThemeData.dark().copyWith(
+                                colorScheme: ColorScheme.dark(
+                                primary: Colors.green,
+                                surface: Colors.green,
+                              ),
+                            ),
+                              child: child,
+                            );
+                        }
+                      ).then((date) => setState((){
+                        dateController.text = dateFormatter.format(date).toString();
+                      }));
+                      },
+                    icon: Icon(Icons.calendar_today),
+                  ),
+                ),
               ),
               Container(                                         //Task Color
                 padding: EdgeInsets.fromLTRB(0, 25, 0, 0),
@@ -101,7 +126,6 @@ class TaskDetails extends StatelessWidget {
                 renderBorder: false,
                 fillColor: Colors.grey,
                 selectedColor: Colors.white,
-                color: Colors.black,
                 children: <Widget> [
                   Padding(
                     padding: EdgeInsets.only(left: 20, right: 20),
@@ -160,8 +184,6 @@ class TaskDetails extends StatelessWidget {
     taskName = nameController.text;
     dueDate = dateController.text;
     taskDescription = descriptionController.text;
-    print("Task Color");
-    print(taskColor);
 
     var task = Task();  // task object to pass back to home page
 
