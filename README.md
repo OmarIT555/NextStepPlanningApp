@@ -1,16 +1,16 @@
-# next_step_planning
+# 1.Team / Project Name
+Next Step Planning App
 
-SoftDev project
+# 1.Repo location URL
 
-## Getting Started
+- (https://github.com/OmarIT555/NextStepPlanningApp)
 
-This project is a starting point for a Flutter application.
+# 3.Progress tracking tool and URL
 
-A few resources to get you started if this is your first Flutter project:
+# 4.Software Download
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+# 5.Team Members
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Next Step Planning App
+
+# License
