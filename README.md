@@ -1,16 +1,30 @@
-# 1.Team / Project Name
+# Project Name
 Next Step Planning App
 
-# 1.Repo location URL
+# Repo location URL
+GitHub: (https://github.com/OmarIT555/NextStepPlanningApp)
 
-- (https://github.com/OmarIT555/NextStepPlanningApp)
+# Progress tracking tool and URL
+Jira: (https://team-1611592343608.atlassian.net/jira/software/projects/NSP/boards/1)
 
-# 3.Progress tracking tool and URL
+# Communication Tool
+<ul>
+<li>Discord</li>
+</ul>
+# Software Download
 
-# 4.Software Download
-
-# 5.Team Members
+# Team Members
+<ul>
+<li>Amina Anwar</li>
+<li>Nga Tran</li>
+<li>Omar Salihbegovic</li>
+</ul>
 
 # Next Step Planning App
+
+# Requirements
+To download the App, you need an Android phone.
+
+# Build Architecture
 
 # License
