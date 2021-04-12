@@ -86,8 +86,10 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       print(result);
       Task task = result;
-      taskAssign(task);
-      saveData();
+      if(task != null){  // if task return not null add to list
+        taskAssign(task);
+        saveData();
+      }
     });
   }
 

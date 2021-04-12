@@ -38,7 +38,7 @@ class TaskDetails extends StatelessWidget {
                   ),
                   child: Text("Save"),
                   onPressed: () {
-                    returnHome(context);
+                    saveClick(context);
                   },
                 ),
               ),
@@ -51,7 +51,7 @@ class TaskDetails extends StatelessWidget {
                   ),
                   child: Text("Cancel"),
                   onPressed: () {
-                    returnHome(context);
+                    cancelClick(context);
                   },
                 ),
               ),
@@ -176,8 +176,10 @@ class TaskDetails extends StatelessWidget {
   }
 
   //Navigate back to home screen
-  void returnHome(BuildContext context) {
-    Navigator.pop(context, createTask());
+  void saveClick(BuildContext context) {
+    if(validateInput(context) == true){
+      Navigator.pop(context, createTask());
+    }
   }
 
   Task createTask(){
@@ -197,6 +199,46 @@ class TaskDetails extends StatelessWidget {
 
     //!!! Validate task before returning !!!
     return task;
+  }
+
+  void cancelClick(BuildContext context) {
+    Navigator.pop(context, null);
+  }
+
+  bool validateInput(BuildContext context){
+    if (taskName == null){
+      showAlertDialog(context);  // pop up dialog with invalid message
+      return false;
+    }else{
+      return true;
+    }
+  }
+
+  showAlertDialog(BuildContext context) {
+    // set up the button
+    Widget okButton = TextButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Uh Oh!"),
+      content: Text("Task name cannot be empty."),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 }
 
