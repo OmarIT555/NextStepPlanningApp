@@ -1,16 +1,37 @@
-# next_step_planning
+# Project Name
+Next Step Planning App 📱
 
-SoftDev project
+# Purpose
+The purpose of this app is to give you the same feels when using sticky notes on a laptop. You can't bring your laptop everywhere but you can have your phone anywhere / everywhere.
 
-## Getting Started
+# Repo location URL
+GitHub: (https://github.com/OmarIT555/NextStepPlanningApp)
 
-This project is a starting point for a Flutter application.
+# Progress tracking tool and URL
+Jira: (https://team-1611592343608.atlassian.net/jira/software/projects/NSP/boards/1)
 
-A few resources to get you started if this is your first Flutter project:
+# Communication Tool
+<ul>
+<li>Discord</li>
+ <li>GGC mail</li>
+</ul>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+# Software Download
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Team Members
+<ul>
+<li>Amina Anwar♊</li> 
+<li>Nga Tran👽</li>
+<li>Omar Salihbegovic🧍</li>
+</ul> 
+
+# Requirements 
+To download the App from the App store, you need an Android Phone **[📱](https://www.android.com/phones-tablets/)**.
+
+# Build Architecture
+**[Flutter](https://flutter.dev/docs/get-started/install)**
+<br/>
+**[Android Studio](https://developer.android.com/studio)**
+
+# License
+This software is protected under the **[the name goes here](Link)** You may use it, provided that any modifications you make to it are available for others to use and modify in a similar manner.
