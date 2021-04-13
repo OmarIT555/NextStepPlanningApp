@@ -28,15 +28,15 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
 
     // Attempting to get all tasks stored in the database
-    DataBase.db.getTasks().then((taskList) => tasks);
+    //DataBase.db.getTasks().then((taskList) => tasks);
 
     // SQFlite database debug
-    print("Printing DataBase");
-    print(DataBase.db.getTasks());
+    //print("Printing DataBase");
+    //print(DataBase.db.getTasks());
 
     // Trying to see if list of tasks got placed into the database
-    print("Printing List tasks");
-    print(tasks);
+    //print("Printing List tasks");
+    //print(tasks);
   }
 
   initSharedPreferences() async {
@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void taskAssign(Task task) {
     setState(() {
       tasks.insert(0, task);
-      DataBase.db.insert(task);
+      //DataBase.db.insert(task);
       print(task.taskName);
       print(task.dueDate);
       print(task.taskDescription);
