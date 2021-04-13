@@ -57,12 +57,21 @@ class Task  {
       // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- \\
       Task.fromMap2(Map map) :
             this.taskName = map['taskName'],
-            this.dueDate = map['complete'];
+            this.dueDate = map['dueDate'],
+            this.taskColor = map['taskColor'],
+            this.taskDifficulty = map['taskDifficulty'],
+            this.taskDescription = map['taskDescription'],
+            this.dateCreated = map['dateCreated'];
+
 
       Map toMap2(){
             return{
                   'taskName': this.taskName,
                   'dueDate' : this.dueDate,
+                  'taskColor' : this.taskColor,
+                  'taskDifficulty' : this.taskDifficulty,
+                  'taskDescription' : this.taskDescription,
+                  'dateCreated' : this.dateCreated
             };
       }
       // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- \\

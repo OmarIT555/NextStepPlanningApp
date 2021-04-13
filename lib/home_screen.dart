@@ -125,10 +125,12 @@ class _MyHomePageState extends State<MyHomePage> {
     if (tasks[index].taskDifficulty == "High") {
       return Text("!!!",
           style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold));
-    } else if (tasks[index].taskDifficulty == "Medium") {
+    }
+    else if (tasks[index].taskDifficulty == "Medium") {
       return Text("!!",
           style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold));
-    } else {
+    }
+    else {
       return Text("!",
           style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold));
     }
