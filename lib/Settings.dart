@@ -31,10 +31,13 @@ class Settings extends StatelessWidget {
                 child:
                 TextButton(
                     child: Text('Light Theme', style: TextStyle(color: Colors.green, fontSize: 20)),
-                    onPressed: () => _themeChanger.setTheme(ThemeData.light().copyWith(
-                      accentColor: Colors.green,
-                      primaryColor: Colors.green,
-                    ))),
+                    onPressed: () =>
+                    {
+                      _themeChanger.setTheme(getTheme(0)),
+                      //ThemePrefs().savePrefs(0),
+                      //ThemePrefs().getThemeNumber()
+                    }
+                ),
               ),
 
               Align(
@@ -46,9 +49,13 @@ class Settings extends StatelessWidget {
                 alignment: Alignment.center,
                 child: TextButton(
                     child: Text('Dark Theme', style: TextStyle(color: Colors.green, fontSize: 20)),
-                    onPressed: () => _themeChanger.setTheme(ThemeData.dark().copyWith(
-                        accentColor: Colors.green,
-                        primaryColor: Colors.green))),
+                    onPressed: () =>
+                    {
+                      _themeChanger.setTheme(getTheme(1)),
+                      //ThemePrefs().savePrefs(1),
+                      //ThemePrefs().getThemeNumber()
+                    }
+                ),
               ),
 
               Align(

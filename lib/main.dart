@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:next_step_planning/Sort.dart';
 import 'package:next_step_planning/task_details_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:next_step_planning/theme.dart';
 import 'package:provider/provider.dart';
 import 'Settings.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<ThemeChanger>(
-      create: (_) => ThemeChanger(ThemeData.light().copyWith(accentColor: Colors.green, primaryColor: Colors.green)),
+      create: (_) => ThemeChanger(  getTheme(1) ),
       child: new MaterialAppWithTheme(),
     );
   }
