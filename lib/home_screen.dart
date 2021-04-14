@@ -86,7 +86,8 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       print(result);
       Task task = result;
-      if(task != null){  // if task return not null add to list
+      if (task != null) {
+        // if task return not null add to list
         taskAssign(task);
         saveData();
       }
@@ -111,12 +112,21 @@ class _MyHomePageState extends State<MyHomePage> {
               ScaffoldMessenger.of(context)
                   .showSnackBar(SnackBar(content: Text("Task removed")));
             },
-            child: ListTile(
-              title: Text(tasks[index].taskName),
-              subtitle: Text("Task is due by (${tasks[index].dueDate })"),
-              leading: Icon(Icons.assignment_outlined),
-              trailing: showTaskDifficulty(index),
-            ));
+            child: Container(
+                decoration: new BoxDecoration(
+                  border: Border.all(
+                    color: showTaskColor(index),   // task border color
+                    width: 4,
+                  ),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                margin: const EdgeInsets.all(4.0),
+                child: ListTile(
+                  title: Text(tasks[index].taskName),
+                  subtitle: Text("Task is due by (${tasks[index].dueDate})"),
+                  leading: Icon(Icons.assignment_outlined),
+                  trailing: showTaskDifficulty(index),
+                )));
       },
     );
   }
@@ -125,14 +135,37 @@ class _MyHomePageState extends State<MyHomePage> {
     if (tasks[index].taskDifficulty == "High") {
       return Text("!!!",
           style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold));
-    }
-    else if (tasks[index].taskDifficulty == "Medium") {
+    } else if (tasks[index].taskDifficulty == "Medium") {
       return Text("!!",
           style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold));
-    }
-    else {
+    } else {
       return Text("!",
           style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold));
+    }
+  }
+
+  Color showTaskColor(int index){
+    print("task color");
+    print(tasks[index].taskColor);
+    switch(tasks[index].taskColor)
+    {
+      case 'green':
+        return Colors.green;
+        break;
+      case 'red':
+        return Colors.red;
+        break;
+      case 'blue':
+        return Colors.blue;
+        break;
+      case 'yellow':
+        return Colors.yellow;
+        break;
+      case 'purple':
+        return Colors.purple;
+        break;
+      default:
+        return Colors.white;
     }
   }
 
