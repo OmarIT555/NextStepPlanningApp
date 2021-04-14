@@ -36,10 +36,11 @@ dependencies:
   provider:
 
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+syncfunction_flutter_calendar: ^18.4.46
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

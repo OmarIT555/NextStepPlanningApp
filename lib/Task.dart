@@ -1,6 +1,6 @@
  import 'dart:ui';
 
-import 'package:next_step_planning/db/database.dart';
+import 'file:///C:/Users/amina/OneDrive/Desktop/NextStepPlanningApp/lib/database.dart';
 
 class Task  {
       int id;
