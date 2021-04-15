@@ -80,5 +80,11 @@ ThemeData getTheme(int themeNumber) {
         accentColor: Colors.green, primaryColor: Colors.green);
   }
 
+  if(themeNumber == 2) {
+    // Dark Theme
+    currentTheme = ThemeData.dark().copyWith(
+        accentColor: Colors.green, primaryColor: Colors.green);
+  }
+
   return currentTheme;
 }
