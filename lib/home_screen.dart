@@ -123,7 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 margin: const EdgeInsets.all(4.0),
                 child: ListTile(
                   title: Text(tasks[index].taskName),
-                  subtitle: Text("Task is due by (${tasks[index].dueDate})"),
+                  subtitle: Text("Task is due by (${tasks[index].dueDate})\nDescription: ${tasks[index].taskDescription}"),
                   leading: Icon(Icons.assignment_outlined),
                   trailing: showTaskDifficulty(index),
                 )));

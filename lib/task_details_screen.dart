@@ -34,19 +34,6 @@ class TaskDetails extends StatelessWidget {
                     top: 15.0, bottom: 15.0, right: 5.0, left: 5.0),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Color(0xFF2E7D32),
-                  ),
-                  child: Text("Save"),
-                  onPressed: () {
-                    saveClick(context);
-                  },
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(
-                    top: 15.0, bottom: 15.0, right: 5.0, left: 5.0),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
                     primary: Colors.grey,
                   ),
                   child: Text("Cancel"),
@@ -168,6 +155,20 @@ class TaskDetails extends StatelessWidget {
                 onChanged: (description) {
                   taskDescription = description;
                 },
+              ),
+              Container(
+                width: double.infinity,
+                margin: const EdgeInsets.only(left: 3.0, right: 3.0, top: 40.0),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Color(0xFF2E7D32),
+                    shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(10.0))
+                  ),
+                  child: Text("Save"),
+                  onPressed: () {
+                    saveClick(context);
+                  },
+                ),
               ),
             ],
           ),
