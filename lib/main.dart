@@ -12,7 +12,6 @@ void main() => runApp(MyApp());
 
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<ThemeChanger>(
@@ -27,6 +26,7 @@ class MaterialAppWithTheme extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Provider.of<ThemeChanger>(context);
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: NSP_NavigationBar(),
         theme: theme.getTheme(),
     );

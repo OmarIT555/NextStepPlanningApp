@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.next_step_planning">
    <application
-        android:label="next_step_planning"
+        android:label="Next Step Planning"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
