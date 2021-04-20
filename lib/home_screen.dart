@@ -132,10 +132,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Text showTaskDifficulty(int index) {
-    if (tasks[index].taskDifficulty == "High") {
+    if (tasks[index].taskDifficulty == "2High") {
       return Text("!!!",
           style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold));
-    } else if (tasks[index].taskDifficulty == "Medium") {
+    } else if (tasks[index].taskDifficulty == "1Medium") {
       return Text("!!",
           style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold));
     } else {
@@ -167,6 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
       default:
         return Colors.white;
     }
+
   }
 
   void saveData() {

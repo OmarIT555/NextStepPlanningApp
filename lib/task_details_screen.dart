@@ -20,6 +20,7 @@ class TaskDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return StatefulBuilder(builder: (context, setState){
     return Scaffold(
+        resizeToAvoidBottomInset : false,
         appBar: AppBar(
             elevation: 0,
             leadingWidth: 5,
@@ -43,7 +44,7 @@ class TaskDetails extends StatelessWidget {
                 ),
               ),
             ]),
-        body: Center(
+        body: SingleChildScrollView(
             child: Padding(
           padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
           child: Column(
@@ -138,11 +139,11 @@ class TaskDetails extends StatelessWidget {
                     }
                   });
                   if(newIndex == 0){
-                    taskDifficulty = "Low";
+                    taskDifficulty = "0Low";
                   }else if(newIndex == 1){
-                    taskDifficulty = "Medium";
+                    taskDifficulty = "1Medium";
                   }else{
-                    taskDifficulty = "High";
+                    taskDifficulty = "2High";
                   }
                 },
               ),
@@ -195,7 +196,7 @@ class TaskDetails extends StatelessWidget {
     task.taskDescription = taskDescription;
     task.taskDifficulty = taskDifficulty;
     task.taskColor = taskColor;
-
+    task.dateCreated = DateFormat("yyyy-MM-dd hh:mm:ss").format(DateTime.now());
     //DataBase.db.insert(task); // Was attempting to save the task in the database
 
     //!!! Validate task before returning !!!
@@ -210,7 +211,14 @@ class TaskDetails extends StatelessWidget {
     if (taskName == null){
       showAlertDialog(context);  // pop up dialog with invalid message
       return false;
-    }else{
+    }
+    else{
+      if (taskColor == null){
+        taskColor = "green";
+      }
+      if (taskDifficulty == null){
+        taskDifficulty = "0Low";
+      }
       return true;
     }
   }

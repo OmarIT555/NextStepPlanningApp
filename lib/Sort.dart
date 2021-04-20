@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:next_step_planning/task_details_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -30,6 +31,10 @@ class _MySortPageState extends State<Sort> {
     loadData();
   }
 
+  bool alphaRev = false;
+  bool dateRev = false;
+  bool diffRev = false;
+  bool createdRev = false;
   //Builds The App
   @override
   Widget build(BuildContext context) {
@@ -39,6 +44,121 @@ class _MySortPageState extends State<Sort> {
       ),
       body: Center(
         child: listViewBuilder(tasks.length),
+      ),
+      floatingActionButton:  SpeedDial(
+        animatedIcon: AnimatedIcons.menu_arrow,
+        overlayColor: Colors.black,
+        backgroundColor: Colors.green,
+        animatedIconTheme: IconThemeData.fallback(),
+        children: [
+          SpeedDialChild(
+            child: Icon(Icons.autorenew),
+            backgroundColor: Colors.green,
+            label: 'Reverse Tasks',
+            labelStyle: TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
+            onTap: () {
+              setState(() {
+                tasks = tasks.reversed.toList();
+                saveData();
+              });
+            }
+          ),
+          SpeedDialChild(
+              child: Icon(Icons.sort_by_alpha),
+              backgroundColor: Colors.green,
+              label: 'Sort Alphabetically',
+              labelStyle: TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
+              onTap: () {
+                setState(() {
+                  if(alphaRev == true){
+                    tasks.sort((a, b) => a.taskName.toLowerCase().compareTo(b.taskName.toLowerCase()));
+                    tasks = tasks.reversed.toList();
+                    alphaRev = false;
+                  }
+                  else {
+                    tasks.sort((a, b) => a.taskName.toLowerCase().compareTo(b.taskName.toLowerCase()));
+                    alphaRev = true;
+                  }
+                  saveData();
+                });
+              }
+          ),
+          SpeedDialChild(
+              child: Icon(Icons.color_lens_outlined),
+              backgroundColor: Colors.green,
+              label: 'Sort by color',
+              labelStyle: TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
+              onTap: () {
+                setState(() {
+                    tasks.sort((a, b) => a.taskColor.compareTo(b.taskColor));
+                    tasks = tasks.reversed.toList();
+                    saveData();
+                });
+              }
+          ),
+          SpeedDialChild(
+              child: Icon(Icons.date_range),
+              backgroundColor: Colors.green,
+              label: 'Sort by due date',
+              labelStyle: TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
+              onTap: () {
+                setState(() {
+                  if(dateRev == true){
+                    tasks.sort((a, b) => a.dueDate.compareTo(b.dueDate));
+                    tasks = tasks.reversed.toList();
+                    dateRev = false;
+                  }
+                  else {
+                    tasks.sort((a, b) => a.dueDate.compareTo(b.dueDate));
+                    dateRev = true;
+                  }
+                  saveData();
+                });
+              }
+          ),
+          SpeedDialChild(
+              child: Icon(Icons.assignment_late_outlined),
+              backgroundColor: Colors.green,
+              label: 'Sort by difficulty',
+              labelStyle: TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
+              onTap: () {
+                setState(() {
+                  if(diffRev == true){
+                    tasks.sort((a, b) => a.taskDifficulty.compareTo(b.taskDifficulty));
+                    tasks = tasks.reversed.toList();
+                    diffRev = false;
+                  }
+                  else {
+                    tasks.sort((a, b) => a.taskDifficulty.compareTo(b.taskDifficulty));
+                    diffRev = true;
+                  }
+                  saveData();
+                });
+              }
+          ),
+          SpeedDialChild(
+              child: Icon(Icons.system_update_alt),
+              backgroundColor: Colors.green,
+              label: 'Sort by created date',
+              labelStyle: TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
+              onTap: () {
+                setState(() {
+                  if(createdRev == false){
+                    tasks.sort((a, b) => a.dateCreated.compareTo(b.dateCreated));
+                    tasks = tasks.reversed.toList();
+                    createdRev = true;
+                  }
+                  else {
+                    tasks.sort((a, b) => a.dateCreated.compareTo(b.dateCreated));
+                    createdRev = false;
+                  }
+                  saveData();
+                });
+              }
+          )
+
+
+        ],
       ),
     );
   }
@@ -71,10 +191,10 @@ class _MySortPageState extends State<Sort> {
   }
 
   Text showTaskDifficulty(int index) {
-    if (tasks[index].taskDifficulty == "High") {
+    if (tasks[index].taskDifficulty == "2High") {
       return Text("!!!",
           style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold));
-    } else if (tasks[index].taskDifficulty == "Medium") {
+    } else if (tasks[index].taskDifficulty == "1Medium") {
       return Text("!!",
           style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold));
     } else {
