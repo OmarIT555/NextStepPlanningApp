@@ -17,7 +17,10 @@ Jira: (https://team-1611592343608.atlassian.net/jira/software/projects/NSP/board
 </ul>
 
 # Software Download
-
+<ul>
+<li>Download from GitHub Pg</li>
+ <li>Given Link</li>
+</ul>
 # Team Members
 <ul>
 <li>Amina Anwar♊</li> 
@@ -33,5 +36,4 @@ To download the App from the App store, you need an Android Phone **[📱](https
 <br/>
 **[Android Studio](https://developer.android.com/studio)**
 
-# License
-This software is protected under the **[the name goes here](Link)** You may use it, provided that any modifications you make to it are available for others to use and modify in a similar manner.
+

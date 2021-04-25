@@ -83,8 +83,8 @@ class TaskDetails extends StatelessWidget {
                             return Theme(
                                 data: ThemeData.dark().copyWith(
                                 colorScheme: ColorScheme.dark(
-                                primary: Colors.green,
-                                surface: Colors.green,
+                                primary: Colors.teal,
+                                surface: Colors.teal,
                               ),
                             ),
                               child: child,

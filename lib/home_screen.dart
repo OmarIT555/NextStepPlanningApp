@@ -161,6 +161,9 @@ class _MyHomePageState extends State<MyHomePage> {
       case 'yellow':
         return Colors.yellow;
         break;
+      case 'brown':
+        return Colors.brown;
+        break;
       case 'purple':
         return Colors.purple;
         break;

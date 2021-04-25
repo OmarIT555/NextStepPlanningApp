@@ -53,7 +53,7 @@ class _MySortPageState extends State<Sort> {
         children: [
           SpeedDialChild(
             child: Icon(Icons.autorenew),
-            backgroundColor: Colors.green,
+            backgroundColor: Colors.deepPurpleAccent,
             label: 'Reverse Tasks',
             labelStyle: TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
             onTap: () {
@@ -65,7 +65,7 @@ class _MySortPageState extends State<Sort> {
           ),
           SpeedDialChild(
               child: Icon(Icons.sort_by_alpha),
-              backgroundColor: Colors.green,
+              backgroundColor: Colors.deepPurple,
               label: 'Sort Alphabetically',
               labelStyle: TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
               onTap: () {
@@ -85,7 +85,7 @@ class _MySortPageState extends State<Sort> {
           ),
           SpeedDialChild(
               child: Icon(Icons.color_lens_outlined),
-              backgroundColor: Colors.green,
+              backgroundColor: Colors.purple,
               label: 'Sort by color',
               labelStyle: TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
               onTap: () {
@@ -98,7 +98,7 @@ class _MySortPageState extends State<Sort> {
           ),
           SpeedDialChild(
               child: Icon(Icons.date_range),
-              backgroundColor: Colors.green,
+              backgroundColor: Colors.purpleAccent,
               label: 'Sort by due date',
               labelStyle: TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
               onTap: () {
@@ -118,7 +118,7 @@ class _MySortPageState extends State<Sort> {
           ),
           SpeedDialChild(
               child: Icon(Icons.assignment_late_outlined),
-              backgroundColor: Colors.green,
+              backgroundColor: Colors.pinkAccent,
               label: 'Sort by difficulty',
               labelStyle: TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
               onTap: () {
@@ -138,7 +138,7 @@ class _MySortPageState extends State<Sort> {
           ),
           SpeedDialChild(
               child: Icon(Icons.system_update_alt),
-              backgroundColor: Colors.green,
+              backgroundColor: Colors.teal,
               label: 'Sort by created date',
               labelStyle: TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
               onTap: () {
@@ -219,6 +219,9 @@ class _MySortPageState extends State<Sort> {
         break;
       case 'yellow':
         return Colors.yellow;
+        break;
+      case 'brown':
+        return Colors.brown;
         break;
       case 'purple':
         return Colors.purple;

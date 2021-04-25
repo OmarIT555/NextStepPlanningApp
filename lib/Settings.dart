@@ -74,7 +74,7 @@ class Settings extends StatelessWidget {
                   child: Container(
                     padding: EdgeInsets.only(left: 10.0),
                     child: Text("Version 1.0.0\n"
-                        "\nNext Step Planning helps you manage and organize your schedule by allowing you to create, sort and delete tasks. Unlike other planning apps, NSP allows you to create an infinite number of tasks for FREE! NSP also provides a simple yet responsive and interactive interface that’s easy to use.\n"
+                        "\nNext Step Planning App helps you manage and organize your schedule by allowing you to create, sort and delete tasks. Unlike other planning apps, NSP app allows you to create an infinite number of tasks for FREE! NSP app also provides a simple yet responsive and interactive interface that’s easy to use.\n"
                         "\nFeatures:\n"
                         "-	Add tasks\n"
                         "-	Delete tasks\n"
@@ -105,10 +105,10 @@ class Settings extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: Container(
                   padding: EdgeInsets.only(left: 10.0),
-                  child: Text("How NSP works:\n"
-                      "\n- Add tasks: To add a task navigate to Home and click on the + button at the bottom right, enter your task details and click save. You task should now be in your home screen.\n"
-                      "\n- Delete tasks: Swipe left on the task you want to delete.\n"
-                      "\n- Sort tasks: To sort your tasks navigate to the sort page located on the bottom app bar and click the hamburger pop up menu on the bottom right then pick how you want to sort your tasks.\n",
+                  child: Text("How NSP App works:\n"
+                      "\n- Add Tasks: To add a task, navigate to Home page and click on the + icon at the bottom right. Enter your task details and click save. Your task should now be in your home screen.\n"
+                      "\n- Delete Tasks: It's pretty simple. Just swipe LEFT to delete.\n"
+                      "\n- Sort Tasks: To sort any task, navigate to the Sort Page located at the bottom of the App Bar. Then, click on the hamburger pop up menu on the bottom right and pick how you want to sort your tasks.\n",
 
                       style:
                       TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
