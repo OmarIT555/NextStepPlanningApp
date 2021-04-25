@@ -12,7 +12,7 @@ Jira: (https://team-1611592343608.atlassian.net/jira/software/projects/NSP/board
 
 # Communication Tool
 <ul>
-<li>Discord</li>
+<li>Discord 🖥️</li>
  <li>GGC mail</li>
 </ul>
 
@@ -21,6 +21,7 @@ Jira: (https://team-1611592343608.atlassian.net/jira/software/projects/NSP/board
 <li>Download from GitHub Pg</li>
  <li>Given Link</li>
 </ul>
+
 # Team Members
 <ul>
 <li>Amina Anwar♊</li> 
