@@ -17,6 +17,7 @@ class _MyCustomColorPickerState extends State<MyCustomColorPicker> {
   String red = 'Red';
   String blue = 'Blue';
   String yellow = 'Yellow';
+  String brown = 'Brown';
   String purple = 'Purple';
 
 
@@ -120,6 +121,29 @@ class _MyCustomColorPickerState extends State<MyCustomColorPicker> {
                               border: Border.all(
                                 width: 3,
                                 color: selectedCategory.contains(yellow) ? Colors.grey[700] : Colors.transparent,
+                              ),
+                              borderRadius: BorderRadius.all(Radius.circular(48.0)),
+                            ),
+                            child: Text('  ',
+                              style: TextStyle(color: Colors.grey[900], fontSize: 10.0, fontWeight: FontWeight.w500),),
+                          ),
+                        ),
+                        SizedBox(width: 2.0,),
+                        InkWell(
+                          onTap: (){
+                            selectedCategory = new List<String>();
+                            selectedCategory.add(brown);
+                            selectedColor = "brown";
+                            widget.callback(selectedColor);
+                            setState(() {});
+                          },
+                          child: Container(
+                            padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 12.0),
+                            decoration: BoxDecoration(
+                              color: Colors.brown,
+                              border: Border.all(
+                                width: 3,
+                                color: selectedCategory.contains(green) ? Colors.grey[700] : Colors.transparent,
                               ),
                               borderRadius: BorderRadius.all(Radius.circular(48.0)),
                             ),
