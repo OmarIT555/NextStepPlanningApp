@@ -2,13 +2,16 @@
 Next Step Planning App 📱
 
 # Purpose
-The purpose of this app is to give you the same feels when using sticky notes on a laptop. You can't bring your laptop everywhere but you can have your phone anywhere / everywhere.
+The purpose of this project is to create a planning app through android studios, using the Flutter SDK. Users will be able to create tasks and set dates for the task to be done.
+
+# Website
+http://electricdisk.altervista.org/NextStepPlanning/index.html
 
 # Repo location URL
 GitHub: (https://github.com/OmarIT555/NextStepPlanningApp)
 
 # Progress tracking tool and URL
-Jira: (https://team-1611592343608.atlassian.net/jira/software/projects/NSP/boards/1)
+Jira (SnapShot): (https://drive.google.com/file/d/1cfydkizCwG-on5vyaEHbBJUwNMkBtFJb/view?usp=sharing)
 
 # Communication Tool
 <ul>
