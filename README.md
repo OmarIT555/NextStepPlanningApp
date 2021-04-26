@@ -32,8 +32,8 @@ Jira (SnapShot): (https://drive.google.com/file/d/1cfydkizCwG-on5vyaEHbBJUwNMkBt
 </ul> 
 
 # Technologies
-<ul>
-<li>Flutter 2.0.5</li> 
-<li>Android Studio 4.1.2</li>
-</ul> 
+
+**[Flutter 2.0.5](https://flutter.dev/docs/get-started/install)**
+<br>
+**[Android Studio 4.1.2](https://developer.android.com/studio)**
 
