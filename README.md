@@ -1,5 +1,5 @@
 # Next Step Planning App 📱
-
+![Next Step Planning App](https://i.imgur.com/9zXhTUo.png)
 # Purpose
 The purpose of this project is to create a planning app through android studios, using the Flutter SDK. Users will be able to create tasks and set dates for the task to be done.
 
