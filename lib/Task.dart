@@ -1,8 +1,12 @@
  import 'dart:ui';
-
  import 'package:next_step_planning/db/database.dart';
+ /***
+  * This is the outlook page  of the hamburger icon in the Sorting Page at the
+  * bottom on the right side which is connected to the Task Detail page where
+  * the info will go which is connected o each other.
+  */
 
-class Task  {
+ class Task  {
       int id;
       String taskName;
       String dueDate;

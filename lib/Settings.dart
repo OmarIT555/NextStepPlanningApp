@@ -4,6 +4,12 @@
   import 'package:provider/provider.dart';
   import 'theme.dart';
 
+  /***
+   * This is he Setting page which contains three main things.
+   *  Theme- we have given 2 choices when it comes to themes (light, dark)
+   *  About - the purpose behind the app and its features like adding/ deleting/sorting tasks..
+   *  Help- allow user to read if they need assistance on how to run the app.
+   */
   class Settings extends StatelessWidget {
     @override
     Widget build(BuildContext context) {

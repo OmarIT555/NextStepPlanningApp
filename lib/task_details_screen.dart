@@ -5,6 +5,12 @@
   import 'customColorPicker.dart';
   import 'package:intl/intl.dart';
 
+  /***
+   * his page is the Task Detail page under the + icon in the Home page on the bottom right.
+   * This page will let you add the name of the task, set its due date, add any
+   * color/ difficulty level and description (optional) and will let you save it
+   * on the Home page after he user is done filling it out.
+   */
   class TaskDetails extends StatelessWidget {
     // Access the TextField texts
     var nameController = TextEditingController();

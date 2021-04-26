@@ -8,7 +8,10 @@
 
   import 'Task.dart';
 
-  // This this the home screen. It contains all of the tasks the user have created.
+  /***
+   * This this the home screen. It contains all of the tasks the user have created.
+   */
+
   class MyHomePage extends StatefulWidget {
     @override
     State<StatefulWidget> createState() {

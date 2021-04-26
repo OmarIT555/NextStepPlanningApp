@@ -10,7 +10,9 @@
 
   void main() => runApp(MyApp());
 
-
+  /***
+   * This page talks bout the green bar (which you see all the time) at the bottom of the screen containing home button, Sort, and Settings.
+   */
   class MyApp extends StatelessWidget {
     @override
     Widget build(BuildContext context) {

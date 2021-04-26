@@ -6,8 +6,12 @@
   import 'package:next_step_planning/task_details_screen.dart';
   import 'package:shared_preferences/shared_preferences.dart';
 
+  /***
+   * the page is the hamburger sign in green color on the bottom right corner of the Sorting page.
+   * It will let you sort the task based on the created date,
+   * on the difficulty level, by the due date, by the color, in alphabetical order , and lastly in reverve order too.
+   */
   import 'Task.dart';
-
   class Sort extends StatefulWidget {
     @override
     State<StatefulWidget> createState() {
@@ -40,7 +44,7 @@
     Widget build(BuildContext context) {
       return Scaffold(
         appBar: AppBar(
-          title: Text("Sorting"),
+          title: Text("Sorting"),            // sorting button at the bottom on the green panel
         ),
         body: Center(
           child: listViewBuilder(tasks.length),
@@ -54,7 +58,7 @@
             SpeedDialChild(
               child: Icon(Icons.autorenew),
               backgroundColor: Colors.deepPurpleAccent,
-              label: 'Reverse Tasks',
+              label: 'Reverse Tasks',        // sort tasks in reverse order than how you created it in the 1st place.
               labelStyle: TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
               onTap: () {
                 setState(() {
@@ -66,7 +70,7 @@
             SpeedDialChild(
                 child: Icon(Icons.sort_by_alpha),
                 backgroundColor: Colors.deepPurple,
-                label: 'Sort Alphabetically',
+                label: 'Sort Alphabetically',      // can sort tasks in alphabetical order
                 labelStyle: TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
                 onTap: () {
                   setState(() {
@@ -86,7 +90,7 @@
             SpeedDialChild(
                 child: Icon(Icons.color_lens_outlined),
                 backgroundColor: Colors.purple,
-                label: 'Sort by color',
+                label: 'Sort by color',           // sort tasks by colors
                 labelStyle: TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
                 onTap: () {
                   setState(() {
@@ -99,7 +103,7 @@
             SpeedDialChild(
                 child: Icon(Icons.date_range),
                 backgroundColor: Colors.purpleAccent,
-                label: 'Sort by due date',
+                label: 'Sort by due date',      // sort tasks by date
                 labelStyle: TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
                 onTap: () {
                   setState(() {
@@ -119,7 +123,7 @@
             SpeedDialChild(
                 child: Icon(Icons.assignment_late_outlined),
                 backgroundColor: Colors.pinkAccent,
-                label: 'Sort by difficulty',
+                label: 'Sort by difficulty',       // sort task by difficuty level
                 labelStyle: TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
                 onTap: () {
                   setState(() {
@@ -139,7 +143,7 @@
             SpeedDialChild(
                 child: Icon(Icons.system_update_alt),
                 backgroundColor: Colors.teal,
-                label: 'Sort by created date',
+                label: 'Sort by created date',                  // sort task based on the date it was created
                 labelStyle: TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
                 onTap: () {
                   setState(() {

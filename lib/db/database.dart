@@ -4,7 +4,9 @@
   import '../Task.dart';
 
   /***
-   *
+   * THis page talks about all the things added in the Task Detail page from
+   * naming the task to adding its due date by setting it to its difficulty level
+   * by giving description (which is optional).
    */
   class DataBase {
     static const String TABLE_TASK = "task";

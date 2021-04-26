@@ -2,6 +2,9 @@
   import 'package:sqflite/sqflite.dart';
   import 'package:sqflite/sqlite_api.dart';
 
+  /***
+   * This is where all the information is saved for the tasks by is name, color, due date, difficulty level , and description.
+   */
   import 'Task.dart';
 
   class DataBase {
