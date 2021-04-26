@@ -47,7 +47,9 @@
       loadData();
     }
 
-    // Add new task to the list
+    /***
+     * Add new task to the list
+     */
     void taskAssign(Task task) {
       setState(() {
         tasks.insert(0, task);
@@ -79,7 +81,9 @@
       );
     }
 
-    // Navigate to the TaskDetails class and add new task to the list of task(s)
+    /***
+     *  Navigate to the TaskDetails class and add new task to the list of task(s)
+     */
     Future<void> addTask() async {
       final result = await Navigator.push(
           context,
@@ -97,7 +101,9 @@
       });
     }
 
-    // Used for creating and removing tasks
+    /***
+     * This is used for creating and removing tasks
+     */
     ListView listViewBuilder() {
       return ListView.builder(
         itemCount: tasks.length,
@@ -111,7 +117,9 @@
                   tasks.removeAt(index);
                   saveData();
                 });
-                // Message confirming the removal of a task
+                /***
+                 * Message confirming the removal of a task
+                 */
                 ScaffoldMessenger.of(context)
                     .showSnackBar(SnackBar(content: Text("Task removed")));
               },
@@ -134,6 +142,9 @@
       );
     }
 
+    /***
+     * Determining how to prioritize the class
+     */
     Text showTaskDifficulty(int index) {
       if (tasks[index].taskDifficulty == "2High") {
         return Text("!!!",
