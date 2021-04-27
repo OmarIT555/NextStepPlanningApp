@@ -19,10 +19,10 @@ Jira (SnapShot): (https://drive.google.com/file/d/1cfydkizCwG-on5vyaEHbBJUwNMkBt
 </ul>
 
 # Software Download
-<ul>
-<li>Download from GitHub Pg</li>
- <li>Given Link</li>
-</ul>
+**[NSP Website Download](http://electricdisk.altervista.org/NextStepPlanning/download.html)**
+<br>
+**[GitHub Download](https://github.com/OmarIT555/NextStepPlanningApp/releases/tag/v1.0.0)**
+
 
 # Team Members
 <ul>
