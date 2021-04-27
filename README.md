@@ -1,6 +1,5 @@
-# Project Name
-Next Step Planning App 📱
-
+# Next Step Planning App 📱
+![Next Step Planning App](https://i.imgur.com/9zXhTUo.png)
 # Purpose
 The purpose of this project is to create a planning app through android studios, using the Flutter SDK. Users will be able to create tasks and set dates for the task to be done.
 
@@ -32,12 +31,9 @@ Jira (SnapShot): (https://drive.google.com/file/d/1cfydkizCwG-on5vyaEHbBJUwNMkBt
 <li>Omar Salihbegovic🧍</li>
 </ul> 
 
-# Requirements 
-To download the App from the App store, you need an Android Phone **[📱](https://www.android.com/phones-tablets/)**.
+# Technologies
 
-# Build Architecture
-**[Flutter](https://flutter.dev/docs/get-started/install)**
-<br/>
-**[Android Studio](https://developer.android.com/studio)**
-
+**[Flutter 2.0.5](https://flutter.dev/docs/get-started/install)**
+<br>
+**[Android Studio 4.1.2](https://developer.android.com/studio)**
 
